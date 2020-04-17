@@ -24,24 +24,30 @@
             </li>
 
             {{-- NAVIGATION --}}
-            <li class=" navigation-header"><span>Data master</span></li>
+            <li class=" navigation-header"><span>Data Master</span></li>
 
             <li class="nav-item {{ url()->current() == url('admin/siswa') ? 'active' : '' }}">
                 <a href="{{ route('siswa') }}">
                     <i class="feather icon-user"></i>
-                    <span class="menu-title" data-i18n="Data Master">Siswa</span>
+                    <span class="menu-title" data-i18n="">Siswa</span>
                 </a>            
             </li>                               
             <li class="nav-item {{ url()->current() == url('admin/kelas') ? 'active' : '' }}">
                 <a href="{{ route('kelas') }}">
                     <i class="feather icon-book"></i>
-                    <span class="menu-title" data-i18n="Data Master">Kelas</span>
+                    <span class="menu-title" data-i18n="">Kelas</span>
                 </a>            
             </li>                               
             <li class="nav-item {{ url()->current() == url('admin/spp') ? 'active' : '' }}">
                 <a href="{{ route('spp') }}">
                     <i class="feather icon-package"></i>
-                    <span class="menu-title" data-i18n="Data Master">SPP</span>
+                    <span class="menu-title" data-i18n="">SPP</span>
+                </a>            
+            </li>                                           
+            <li class="nav-item {{ url()->current() == url('admin/petugas') ? 'active' : '' }}">
+                <a href="{{ route('spp') }}">
+                    <i class="feather icon-shield"></i>
+                    <span class="menu-title" data-i18n="">Petugas</span>
                 </a>            
             </li>                               
         </ul>

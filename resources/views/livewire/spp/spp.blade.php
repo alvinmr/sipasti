@@ -45,12 +45,14 @@
         </div>
     </div>
     @if (session()->has('message'))
-    <div class="alert alert-success alert-dismissible fade show" role="alert">
-        {{ session('message') }}
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
+    <script>
+        Swal.fire({
+        title: '{{ session("judul") }}!',
+        text: '{{ session("message") }}',
+        type: '{{ session("jenis") }}',
+        confirmButtonText: 'Oke'
+        })
+    </script>
     @endif
     <div class="card mt-2">
         <div class="card-header">
@@ -73,7 +75,20 @@
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $spp->tahun }}</td>
                         <td>{{ $spp->nominal }}</td>
-                        </tr>              
+                        <td>
+                            <button wire:click="showEdit({{ $spp->id }})" class="btn btn-icon rounded-circle btn-warning mr-1 mb-1" id="editBtn{{ $loop->iteration }}">
+                                <i class="feather icon-edit-2"></i>
+                            </button>
+                            <script>
+                            $('#editBtn{{ $loop->iteration }}').click(function() {
+                                $('html, body').animate({scrollTop: '0px'}, 300);
+                            });
+                            </script>
+                            <button wire:click="delete({{ $spp->id }})" class="btn btn-icon rounded-circle btn-danger mr-1 mb-1">
+                                <i class="feather icon-trash"></i>
+                            </button> 
+                        </td>
+                    </tr>              
                     @endforeach                            
                 </tbody>
                 </table>

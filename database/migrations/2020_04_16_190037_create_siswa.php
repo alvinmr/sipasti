@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Buatsiswa extends Migration
+class CreateSiswa extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,16 @@ class Buatsiswa extends Migration
      */
     public function up()
     {
-        Schema::create('siswa', function (Blueprint $table) {            
-            $table->id('nisn');
+        Schema::create('siswa', function (Blueprint $table) {
+            $table->string('nisn');
             $table->string('nis');
             $table->string('nama');
-            $table->integer('id_kelas');
+            $table->foreignId('kelas_id')->constrained();
             $table->string('alamat');
             $table->string('no_tlp');
-            $table->integer('id_spp');
+            $table->unsignedBigInteger('spp_id');
+
+            $table->foreign('spp_id')->references('id')->on('spp');
         });
     }
 

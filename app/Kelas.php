@@ -11,6 +11,6 @@ class Kelas extends Model
     public $timestamps = false;
 
     public function siswa(){
-        return $this->hasOne('Siswa::class');
+        return $this->hasOne(Siswa::class);
     }
 }

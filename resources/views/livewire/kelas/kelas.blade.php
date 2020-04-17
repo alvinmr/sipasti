@@ -1,7 +1,7 @@
 <div>
     <div class="card">
         <div class="card-header pb-2">
-            <h4 class="card-title">Tambah Kelas</h4>
+            <h4 class="card-title">{{ $judul_form }}</h4>
             <div class="heading-elements">
                 <ul class="list-inline mb-0">
                     <li><a data-action="collapse"><i class="feather icon-minus"></i></a></li>                
@@ -10,18 +10,15 @@
             </div>
         </div>
         <div class="card-content collapse show" aria-expanded="true">
-            <div class="card-body">
-            <form wire:submit.prevent="add">
-                <div class="row">
+            <div class="card-body">            
+                <div class="row">                      
                     <div class="col-lg-6">
                         <div class="form-group">
                         <label for="nisn">Nama Kelas</label>
-                        <input type="text" style="text-transform: uppercase;" wire:model.lazy="nama_kelas" class="form-control round" id="nisn" placeholder="000009">
-                        @error('nisn') 
-                        <div class="alert alert-danger mt-1 alert-validation-msg" role="alert" style="display: block;">
-                            <i class="feather icon-info mr-1 align-middle"></i>
-                            <span class="error">{{ $message }}</span> 
-                        </div>
+                        <input type="text" style="text-transform: uppercase;" wire:model.lazy="nama_kelas" class="form-control round" placeholder="000009">
+                        @error('nama_kelas') 
+                        <i class="feather icon-info mr-1 align-middle"></i>
+                        <span class="error danger">{{ $message }}</span>  
                         @enderror
                         </div>                
                     </div>   
@@ -29,28 +26,29 @@
                     <div class="col-lg-6">
                         <div class="form-group">
                         <label for="nis">Kompetensi Keahlian</label>
-                        <input type="text" wire:model.lazy="kompetensi_keahlian" class="form-control round" id="nis" placeholder="000009">
-                        @error('nis') 
-                        <div class="alert alert-danger mt-1 alert-validation-msg" role="alert" style="display: block;">
-                            <i class="feather icon-info mr-1 align-middle"></i>
-                            <span class="error">{{ $message }}</span> 
-                        </div>
+                        <input type="text" wire:model.lazy="kompetensi_keahlian" class="form-control round" placeholder="000009">
+                        @error('kompetensi_keahlian') 
+                        <i class="feather icon-info mr-1 align-middle"></i>
+                        <span class="error danger">{{ $message }}</span>                         
                         @enderror
                         </div>
                     </div>                  
                 </div>
-                <button type="submit" class="btn bg-gradient-primary round"><i class="feather icon-send"></i> Submit</button>
-            </form>
+                <button wire:click="add" class="mx-1 btn bg-gradient-primary round {{ $block == true ? 'd-inline' : 'd-none' }}"><i class="feather icon-send"></i> Tambah</button>            
+                <button wire:click="edit({{ $kelas_id }})" class="mx-1 btn bg-gradient-primary round {{ $block == true ? 'd-none' : 'd-inline' }}"><i class="feather icon-send"></i> Edit</button>            
+                <button wire:click="resetall" class="btn btn-flat-danger round {{ $block == false ? '' : 'd-none' }}"><i class="feather icon-x"></i> Cancel</button>                            
             </div>
         </div>
     </div>
     @if (session()->has('message'))
-    <div class="alert alert-success alert-dismissible fade show" role="alert">
-        {{ session('message') }}
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
+    <script>
+        Swal.fire({
+        title: '{{ session("judul") }}!',
+        text: '{{ session("message") }}',
+        type: '{{ session("jenis") }}',
+        confirmButtonText: 'Oke'
+        })
+    </script>
     @endif
     <div class="card mt-2">
         <div class="card-header">
@@ -73,7 +71,20 @@
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $kelas->nama_kelas }}</td>
                         <td>{{ $kelas->kompetensi_keahlian }}</td>
-                        </tr>              
+                        <td>
+                            <button wire:click="showEdit({{ $kelas->id }})" class="btn btn-icon rounded-circle btn-warning mr-1 mb-1" id="editBtn{{ $loop->iteration }}">
+                                <i class="feather icon-edit-2"></i>
+                            </button>
+                            <script>
+                            $('#editBtn{{ $loop->iteration }}').click(function() {
+                                $('html, body').animate({scrollTop: '0px'}, 300);
+                            });
+                            </script>     
+                            <button wire:click="delete({{ $kelas->id }})" class="btn btn-icon rounded-circle btn-danger mr-1 mb-1">
+                                <i class="feather icon-trash"></i>
+                            </button>                       
+                        </td>
+                    </tr>              
                     @endforeach                            
                 </tbody>
                 </table>
