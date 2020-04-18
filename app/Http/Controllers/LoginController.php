@@ -37,7 +37,7 @@ class LoginController extends Controller
         }
         return redirect()->route('login')->with('error', 'Akun tidak ada');
     }
-    return redirect('/login')->with('error', "Gagal Login");
+    return redirect('/')->with('error', "Gagal Login");
     }
 
     public function logout()
@@ -47,6 +47,6 @@ class LoginController extends Controller
         }elseif(Auth::guard('petugas')->check()){
             Auth::guard('petugas')->logout();
         }
-        return redirect('/login');
+        return redirect('/');
     }
 }
