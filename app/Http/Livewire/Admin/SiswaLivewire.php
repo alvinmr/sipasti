@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\Admin;
 
 use App\Siswa;
 use App\Kelas;
@@ -12,6 +12,7 @@ class SiswaLivewire extends Component
 {
 	use WithPagination;    
 
+	public $siswa_id;
 	public $nisn;
 	public $nis;
 	public $nama;
@@ -37,7 +38,7 @@ class SiswaLivewire extends Component
 		]);		
 		Siswa::create($validate);
 		session()->flash('message', 'Siswa berhasil ditambah');
-		return redirect()->route('siswa');
+		return redirect()->route('admin.siswa');
 		
 	}
 
@@ -45,11 +46,12 @@ class SiswaLivewire extends Component
 	{
 		Siswa::destroy($nisn);
 		session()->flash('message', 'Siswa berhasil dihapus');
-		return redirect()->route('siswa');
+		return redirect()->route('admin.siswa');
 	}
-	public function edit($nisn)
+	public function edit($id)
 	{
-		$siswa = Siswa::find($nisn);
+		$siswa = Siswa::find($id);
+		$siswa->spp()->associate($this->spp_id);
 		$siswa->nis = $this->nis;
 		$siswa->nama = $this->nama;
 		$siswa->kelas_id = $this->kelas_id;
@@ -58,15 +60,16 @@ class SiswaLivewire extends Component
 		$siswa->spp_id = $this->spp_id;
 		$siswa->save();
 		session()->flash('message', 'Siswa berhasil diedit');
-		return redirect()->route('siswa');
+		return redirect()->route('admin.siswa');
 	}
 
-	public function showEdit($nisn)
+	public function showEdit($id)
 	{
-		$siswa = Siswa::find($nisn);
+		$siswa = Siswa::find($id);
 		$this->block = false;
 		$this->judul_form = 'Edit Siswa';
 		$this->button = 'edit';
+		$this->siswa_id = $siswa->id;
 		$this->nisn = $siswa->nisn;
 		$this->nis = $siswa->nis;
 		$this->nama = $siswa->nama;
@@ -83,7 +86,7 @@ class SiswaLivewire extends Component
 
 	public function render()
 	{
-		return view('livewire.siswa.siswa',[
+		return view('livewire.admin.siswa',[
 			'siswas' => Siswa::paginate(5),
 			'kelas' => Kelas::all(),
 			'spp' => Spp::all()

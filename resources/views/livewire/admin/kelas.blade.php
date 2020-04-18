@@ -26,7 +26,7 @@
                     <div class="col-lg-6">
                         <div class="form-group">
                         <label for="nis">Kompetensi Keahlian</label>
-                        <input type="text" wire:model.lazy="kompetensi_keahlian" class="form-control round" placeholder="000009">
+                        <input type="text" style="text-transform: capitalize;" wire:model.lazy="kompetensi_keahlian" class="form-control round" placeholder="000009">
                         @error('kompetensi_keahlian') 
                         <i class="feather icon-info mr-1 align-middle"></i>
                         <span class="error danger">{{ $message }}</span>                         
@@ -57,12 +57,13 @@
             </div>
         </div>
         <div class="card-body">
-            <table class="table table-responsive-sm table-hover-animation table-hover">
+            <table class="table table-responsive-sm table-hover-animation">
                 <thead class="primary">
                     <tr>
-                    <th>#</th>
-                    <th>Nama Kelas</th>
-                    <th>Kompetensi Keahlian</th>
+                        <th>#</th>
+                        <th>Nama Kelas</th>
+                        <th>Kompetensi Keahlian</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>

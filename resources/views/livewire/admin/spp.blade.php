@@ -10,18 +10,16 @@
             </div>
         </div>
         <div class="card-content collapse show" aria-expanded="true">
-            <div class="card-body">
-            <form wire:submit.prevent="add">
+            <div class="card-body">            
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="form-group">
-                        <label for="nisn">Tahun</label>
-                        <input type="text" wire:model.lazy="tahun" class="form-control round" placeholder="000009">
+                        <label for="tahun">Tahun</label>
+                        <input type="text" wire:model.lazy="tahun" class="form-control round @error('tahun') is-invalid @enderror" placeholder="000009">
                         @error('tahun') 
-                        <div class="alert alert-danger mt-1 alert-validation-msg" role="alert" style="display: block;">
-                            <i class="feather icon-info mr-1 align-middle"></i>
-                            <span class="error">{{ $message }}</span> 
-                        </div>
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
                         @enderror
                         </div>                
                     </div>   
@@ -29,18 +27,18 @@
                     <div class="col-lg-6">
                         <div class="form-group">
                         <label for="nis">Nominal</label>
-                        <input type="text" wire:model.lazy="nominal" class="form-control round" placeholder="000009">
+                        <input type="text" data-mask-reverse="true" wire:model.lazy="nominal" id="nominal" class="form-control round @error('nominal') is-invalid @enderror" placeholder="000009">
                         @error('nominal') 
-                        <div class="alert alert-danger mt-1 alert-validation-msg" role="alert" style="display: block;">
-                            <i class="feather icon-info mr-1 align-middle"></i>
-                            <span class="error">{{ $message }}</span> 
-                        </div>
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
                         @enderror
                         </div>
                     </div>                  
                 </div>
-                <button type="submit" class="btn bg-gradient-primary round"><i class="feather icon-send"></i> Submit</button>
-            </form>
+                <button wire:click="add" class="mx-1 btn bg-gradient-primary round {{ $block == true ? 'd-inline' : 'd-none' }}"><i class="feather icon-send"></i> Tambah</button>            
+                <button wire:click="edit({{ $spp_id }})" class="mx-1 btn bg-gradient-primary round {{ $block == true ? 'd-none' : 'd-inline' }}"><i class="feather icon-send"></i> Edit</button>            
+                <button wire:click="resetall" class="btn btn-flat-danger round {{ $block == false ? '' : 'd-none' }}"><i class="feather icon-x"></i> Cancel</button>                        
             </div>
         </div>
     </div>
@@ -61,12 +59,13 @@
             </div>
         </div>
         <div class="card-body">
-            <table class="table table-responsive-sm table-hover-animation table-hover">
+            <table class="table table-responsive-sm table-hover-animation">
                 <thead class="primary">
                     <tr>
-                    <th>#</th>
-                    <th>Tahun</th>
-                    <th>Nominal</th>
+                        <th>#</th>
+                        <th>Tahun</th>
+                        <th>Nominal</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -74,7 +73,7 @@
                     <tr>
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $spp->tahun }}</td>
-                        <td>{{ $spp->nominal }}</td>
+                        <td>{{ "Rp " . number_format($spp->nominal, 0, ",", ".") }}</td>
                         <td>
                             <button wire:click="showEdit({{ $spp->id }})" class="btn btn-icon rounded-circle btn-warning mr-1 mb-1" id="editBtn{{ $loop->iteration }}">
                                 <i class="feather icon-edit-2"></i>
@@ -82,7 +81,9 @@
                             <script>
                             $('#editBtn{{ $loop->iteration }}').click(function() {
                                 $('html, body').animate({scrollTop: '0px'}, 300);
-                            });
+                                $('#nominal').mask('000.000.000.000.000', {reverse: true});
+
+                            });                           
                             </script>
                             <button wire:click="delete({{ $spp->id }})" class="btn btn-icon rounded-circle btn-danger mr-1 mb-1">
                                 <i class="feather icon-trash"></i>
@@ -96,3 +97,4 @@
         </div>
     </div>      
 </div>
+

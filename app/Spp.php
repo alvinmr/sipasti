@@ -14,4 +14,9 @@ class Spp extends Model
     {
         return $this->hasOne(Siswa::class);
     }
+
+    public function pembayaranSiswa()
+    {
+        return $this->hasOneThrough('App\Siswa', 'App\Pembayaran');
+    }
 }

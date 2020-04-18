@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Kelas;
+namespace App\Http\Livewire\Admin;
 
 use App\Kelas;
 use Livewire\WithPagination;
@@ -25,23 +25,24 @@ class KelasLivewire extends Component
             'kompetensi_keahlian' => 'required'
         ]);
         $validate['nama_kelas'] = strtoupper($validate['nama_kelas']); 
+        $validate['kompetensi_keahlian'] = ucwords($validate['kompetensi_keahlian']); 
         Kelas::create($validate);
         session()->flash('judul', 'Berhasil!');
         session()->flash('message', 'Kelas berhasil ditambah');
         session()->flash('jenis', 'success');
-        return redirect()->route('kelas');
+        return redirect()->route('admin.kelas');
     }
 
     public function edit($id)
     {
         $kelas = Kelas::find($id);
-		$kelas->nama_kelas = $this->nama_kelas;
-        $kelas->kompetensi_keahlian = $this->kompetensi_keahlian;
+		$kelas->nama_kelas = strtoupper($this->nama_kelas);
+        $kelas->kompetensi_keahlian = ucwords($this->kompetensi_keahlian);
 		$kelas->save();
 		session()->flash('judul', 'Berhasil!');
         session()->flash('message', 'Kelas berhasil diedit');
         session()->flash('jenis', 'success');
-		return redirect()->route('kelas');
+		return redirect()->route('admin.kelas');
     }
 
     public function showEdit($id)
@@ -63,12 +64,12 @@ class KelasLivewire extends Component
             session()->flash('judul', 'Berhasil!');
             session()->flash('message', 'Kelas berhasil dihapus');
             session()->flash('jenis', 'success');
-            return redirect()->route('kelas');
+            return redirect()->route('admin.kelas');
         }else{
             session()->flash('judul', 'Gagal!');
             session()->flash('message', 'Kelas memiliki relasi');
             session()->flash('jenis', 'error');
-            return redirect()->route('kelas');
+            return redirect()->route('admin.kelas');
         }        
     }
 
@@ -79,7 +80,7 @@ class KelasLivewire extends Component
 
     public function render()
     {
-        return view('livewire.kelas.kelas',[
+        return view('livewire.admin.kelas',[
             'kelass' => Kelas::paginate(3)
         ]);
     }

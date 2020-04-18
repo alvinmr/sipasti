@@ -88,7 +88,7 @@
                   <select class="form-control round" id="spp">
                       <option disabled {{ $spp_id == '' ? 'selected' : '' }} value="">Pilih SPP</option>
                     @foreach ($spp as $s)
-                      <option wire:ignore.self {{ $spp_id == $s->id ? 'selected' : '' }} value="{{ $s->id }}">{{ $s->nominal }}</option>                                            
+                      <option wire:ignore.self {{ $spp_id == $s->id ? 'selected' : '' }} value="{{ $s->id }}">{{ "Rp ".number_format($s->nominal, 0, ",", ".") }}</option>                                            
                     @endforeach
                   </select>               
                   @error('spp_id')                         
@@ -99,7 +99,7 @@
               </div>
             </div>            
             <button wire:click="add" class="mx-1 btn bg-gradient-primary round {{ $block == true ? 'd-inline' : 'd-none' }}"><i class="feather icon-send"></i> Tambah</button>            
-            <button wire:click="edit({{ $nisn }})" class="mx-1 btn bg-gradient-primary round {{ $block == true ? 'd-none' : 'd-inline' }}"><i class="feather icon-send"></i> Edit</button>            
+            <button wire:click="edit({{ $siswa_id }})" class="mx-1 btn bg-gradient-primary round {{ $block == true ? 'd-none' : 'd-inline' }}"><i class="feather icon-send"></i> Edit</button>            
             <button wire:click="resetall" class="btn btn-flat-danger round {{ $block == false ? '' : 'd-none' }}"><i class="feather icon-x"></i> Cancel</button>            
         </div>
     </div>
@@ -121,7 +121,7 @@
           </div>
       </div>
       <div class="card-body">
-          <table class="table table-responsive-sm table-hover-animation table-hover">
+          <table class="table table-responsive-sm table-hover-animation table-inverse">
             <thead class="primary">
                 <tr>
                   <th>#</th>
@@ -145,9 +145,9 @@
                       <td>{{ $siswa->kelas->nama_kelas }}</td>
                       <td>{{ $siswa->alamat }}</td>
                       <td>{{ $siswa->no_tlp }}</td>
-                      <td>{{ $siswa->spp->nominal }}</td>
+                      <td>{{ "Rp " .number_format($siswa->spp->nominal, 0, ",", ".") }}</td>
                       <td>
-                        <button wire:click="showEdit({{ $siswa->nisn }})" class="btn btn-icon rounded-circle btn-warning mr-1 mb-1" id="editBtn{{ $loop->iteration }}">
+                        <button wire:click="showEdit({{ $siswa->id }})" class="btn btn-icon rounded-circle btn-warning mr-1 mb-1" id="editBtn{{ $loop->iteration }}">
                           <i class="feather icon-edit-2"></i>
                         </button>
                         <script>
@@ -155,7 +155,7 @@
                             $('html, body').animate({scrollTop: '0px'}, 300);
                           });
                         </script>
-                        <button wire:click="delete({{ $siswa->nisn }})" class="btn btn-icon rounded-circle btn-danger mr-1 mb-1">
+                        <button wire:click="delete({{ $siswa->id }})" class="btn btn-icon rounded-circle btn-danger mr-1 mb-1">
                           <i class="feather icon-trash"></i>
                         </button>
                         {{-- <script>
@@ -185,5 +185,5 @@
       });      
       
   });
-  </script>
+</script>
 

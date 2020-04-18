@@ -46,6 +46,18 @@ return [
             'provider' => 'users',
             'hash' => false,
         ],
+        'admin' => [
+            'driver' => 'session',
+            'provider' => 'admin',
+        ],
+        'petugas' => [
+            'driver' => 'session',
+            'provider' => 'petugas',
+        ],
+        'siswa' => [
+            'driver' => 'session',
+            'provider' => 'siswa',
+        ],
     ],
 
     /*
@@ -68,8 +80,20 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => App\User::class,
+            'model' => App\Petugas::class,
         ],
+        'admin' => [
+            'driver' => 'eloquent',
+            'model' => App\Petugas::class,
+        ],
+        'petugas' => [
+            'driver' => 'eloquent',
+            'model' => App\Petugas::class,
+        ],
+        'siswa' => [
+            'driver' => 'eloquent',
+            'model' => App\Siswa::class,
+        ]
 
         // 'users' => [
         //     'driver' => 'database',

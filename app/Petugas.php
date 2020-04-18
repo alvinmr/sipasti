@@ -6,24 +6,14 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Siswa extends Authenticatable
+class Petugas extends Authenticatable
 {
     use Notifiable;
     
     protected $guarded = [];
-    protected $table = 'siswa';
+    protected $hidden = [
+        'password'
+    ];
+    protected $table = 'petugas';
     public $timestamps = false;
-
-    public function kelas(){
-        return $this->belongsTo(Kelas::class);
-    }
-
-    public function spp()
-    {
-        return $this->belongsTo(Spp::class);
-        
-    }
-
-    
-
 }

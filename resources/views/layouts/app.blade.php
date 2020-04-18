@@ -38,7 +38,7 @@
 
 <!-- BEGIN: Body-->
 
-<body class="vertical-layout vertical-menu-modern semi-dark-layout 2-columns  navbar-floating footer-static" data-open="click" data-menu="vertical-menu-modern" data-col="2-columns" data-layout="semi-dark-layout">
+<body class="vertical-layout vertical-menu-modern dark-layout 2-columns  navbar-floating footer-static" data-open="click" data-menu="vertical-menu-modern" data-col="2-columns" data-layout="semi-dark-layout">
 
     <!-- BEGIN: Header-->
     @include('dist.navbar')    
@@ -46,7 +46,11 @@
 
 
     <!-- BEGIN: Main Menu-->
-    @include('dist.sidebar')
+    @if(auth()->user()->level == 'admin')
+        @include('dist.sidebar-admin')
+    @elseif(auth()->user()->level == 'petugas')    
+        @include('dist.sidebar-petugas')
+    @endif
     <!-- END: Main Menu-->
 
     <!-- BEGIN: Content-->
