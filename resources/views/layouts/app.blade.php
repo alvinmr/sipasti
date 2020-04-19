@@ -50,6 +50,8 @@
         @include('dist.sidebar-admin')
     @elseif(auth()->user()->level == 'petugas')    
         @include('dist.sidebar-petugas')
+    @else
+        @include('dist.sidebar-petugas')
     @endif
     <!-- END: Main Menu-->
 

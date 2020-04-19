@@ -22,6 +22,8 @@ class RedirectIfAuthenticated
             return redirect('/admin');
         }elseif (Auth::guard('petugas')->check()){
             return redirect('/petugas');
+        }elseif (Auth::guard('siswa')->check()){
+            return redirect('/siswa');
         }
 
         return $next($request);

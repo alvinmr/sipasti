@@ -21,7 +21,7 @@ class CreatePembayaranSppsTable extends Migration
             $table->string('bulan_dibayar');
             $table->string('tahun_dibayar');
             $table->unsignedBigInteger('spp_id');
-            $table->unsignedBigInteger('jumlah_bayar');
+            $table->integer('jumlah_bayar');
             $table->string('status', 50);
 
             $table->foreign('petugas_id')->references('id')->on('petugas');

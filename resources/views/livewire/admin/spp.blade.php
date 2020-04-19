@@ -27,7 +27,7 @@
                     <div class="col-lg-6">
                         <div class="form-group">
                         <label for="nis">Nominal</label>
-                        <input type="text" data-mask-reverse="true" wire:model.lazy="nominal" id="nominal" class="form-control round @error('nominal') is-invalid @enderror" placeholder="000009">
+                        <input type="text" wire:model.lazy="nominal" id="nominal" class="form-control round @error('nominal') is-invalid @enderror" placeholder="000009">
                         @error('nominal') 
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -82,7 +82,6 @@
                             $('#editBtn{{ $loop->iteration }}').click(function() {
                                 $('html, body').animate({scrollTop: '0px'}, 300);
                                 $('#nominal').mask('000.000.000.000.000', {reverse: true});
-
                             });                           
                             </script>
                             <button wire:click="delete({{ $spp->id }})" class="btn btn-icon rounded-circle btn-danger mr-1 mb-1">
@@ -97,4 +96,10 @@
         </div>
     </div>      
 </div>
+
+<script>
+    $(document).ready(function() {
+        $('#nominal').mask('000.000.000.000.000', {reverse: true});
+    })
+</script>
 

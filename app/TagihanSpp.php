@@ -4,14 +4,14 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Spp extends Model
+class TagihanSpp extends Model
 {
     protected $guarded = [];
-    protected $table = 'spp';
+    protected $table = 'tagihan_spp';
     public $timestamps = false;
 
     public function siswa()
     {
-        return $this->hasOne(Siswa::class);
+        return $this->belongsTo(Siswa::class);
     }
 }

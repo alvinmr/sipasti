@@ -17,7 +17,7 @@
         <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600" rel="stylesheet">
 
         <!-- BEGIN: Vendor CSS-->
-        <link rel="stylesheet" type="text/css" href="{{ asset('') }}app-assets/vendors/css/vendors.min.css">
+        @include('dist.vendor-css')
         <!-- END: Vendor CSS-->
 
         <!-- BEGIN: Theme CSS-->
@@ -51,8 +51,8 @@
                         <div class="col-xl-8 col-11 d-flex justify-content-center">
                             <div class="card bg-authentication rounded-0 mb-0">
                                 <div class="row m-0">
-                                    <div class="col-lg-6 d-lg-block d-none text-center align-self-center px-1 py-0">
-                                        <img src="{{ asset('') }}images/login.png" width="90%" height="90%" alt="branding logo">
+                                    <div class="col-lg-6 d-lg-block d-none align-self-center">
+                                        <img src="{{ asset('') }}images/login-siswa.png" width="90%" height="90%" alt="branding logo">
                                     </div>
                                     <div class="col-lg-6 col-12 p-0">
                                         <div class="card rounded-0 mb-0 px-2">
@@ -64,36 +64,18 @@
                                             <p class="px-2">Selamat datang! yuk mari login dulu</p>
                                             <div class="card-content">
                                                 <div class="card-body pt-1">
-                                                    <form action="/login" method="POST">
+                                                    <form action="/login-siswa" method="POST">
                                                         {{ csrf_field() }}
                                                         <div class="form-label-group form-group position-relative has-icon-left">
-                                                            <input type="text" class="form-control @error('username') is-invalid @enderror" id="user-name" placeholder="Username" name="username">
+                                                            <input type="text" class="form-control" id="nisn" placeholder="NISN" name="nisn">
                                                             <div class="form-control-position">
                                                                 <i class="feather icon-user"></i>
                                                             </div>
-                                                            <label for="user-name">Username</label>
-                                                            @error('username') 
-                                                            <span class="invalid-feedback" role="alert">
-                                                                <strong class="danger">{{ $message }}</strong>
-                                                            </span>                        
-                                                            @enderror
-                                                        </div>
-
-                                                        <div class="form-label-group position-relative has-icon-left">
-                                                            <input type="password" class="form-control @error('password') is-invalid @enderror" id="user-password" placeholder="Password" name="password">
-                                                            <div class="form-control-position">
-                                                                <i class="feather icon-lock"></i>
-                                                            </div>
-                                                            <label for="user-password">Password</label>
-                                                            @error('password') 
-                                                            <span class="invalid-feedback" role="alert">
-                                                                <strong class="danger">{{ $message }}</strong>
-                                                            </span>                      
-                                                            @enderror
+                                                            <label for="nisn">NISN</label>
                                                         </div>
                                                         <div class="form-group d-flex justify-content-between align-items-center">
                                                             <div class="text-right">
-                                                                <a href="/login-siswa" class="card-link">Login Siswa?</a>
+                                                                <a href="{{ route('home') }}" class="card-link">Login Admin/Petugas?</a>
                                                             </div>
                                                         </div>
                                                         <button type="submit" class="btn btn-primary btn-inline round">Login</button>
@@ -117,7 +99,6 @@
         <!-- END: Content-->
 
 
-
         <!-- BEGIN: Vendor JS-->
         @include('dist.vendor-js')
         <!-- BEGIN Vendor JS-->
@@ -126,14 +107,10 @@
         <!-- END: Page Vendor JS-->
 
         <!-- BEGIN: Theme JS-->
-        <script src="{{ asset('') }}app-assets/js/core/app-menu.js"></script>
-        <script src="{{ asset('') }}app-assets/js/core/app.js"></script>
-        <script src="{{ asset('') }}app-assets/js/scripts/components.js"></script>
+        @include('dist.theme-js')
         <!-- END: Theme JS-->
 
         <!-- BEGIN: Page JS-->
-
-        {{-- SweetAlert --}}
         @if (session()->has('message'))
         <script>
             Swal.fire({

@@ -26,7 +26,7 @@ class SppLivewire extends Component
         ]);
         
         $validate['nominal'] = str_replace('.', '', $validate['nominal']);
-        SPP::create($validate);
+        Spp::create($validate);
         session()->flash('judul', 'Berhasil!');
         session()->flash('message', 'SPP berhasil ditambah');
         session()->flash('jenis', 'success');

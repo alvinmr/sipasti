@@ -15,10 +15,11 @@
                     <div class="col-lg-6">
                         <div class="form-group">
                         <label for="nisn">Nama Kelas</label>
-                        <input type="text" style="text-transform: uppercase;" wire:model.lazy="nama_kelas" class="form-control round" placeholder="000009">
+                        <input type="text" style="text-transform: uppercase;" wire:model.lazy="nama_kelas" class="form-control round @error('nama_kelas') is-invalid @enderror" placeholder="000009">
                         @error('nama_kelas') 
-                        <i class="feather icon-info mr-1 align-middle"></i>
-                        <span class="error danger">{{ $message }}</span>  
+                            <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>                          
                         @enderror
                         </div>                
                     </div>   
@@ -26,10 +27,11 @@
                     <div class="col-lg-6">
                         <div class="form-group">
                         <label for="nis">Kompetensi Keahlian</label>
-                        <input type="text" style="text-transform: capitalize;" wire:model.lazy="kompetensi_keahlian" class="form-control round" placeholder="000009">
+                        <input type="text" style="text-transform: capitalize;" wire:model.lazy="kompetensi_keahlian" class="form-control round @error('nama_kelas') is-invalid @enderror" placeholder="000009">
                         @error('kompetensi_keahlian') 
-                        <i class="feather icon-info mr-1 align-middle"></i>
-                        <span class="error danger">{{ $message }}</span>                         
+                            <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>                                                 
                         @enderror
                         </div>
                     </div>                  

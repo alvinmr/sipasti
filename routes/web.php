@@ -17,9 +17,15 @@ use Illuminate\Support\Facades\Route;
 
 // Auth::routes();
 
-Route::get('/', 'LoginController@getLogin')->middleware('guest')->name('home');
-Route::post('/login', 'LoginController@postLogin')->name('login');
+Route::middleware('guest')->group(function () {    
+    Route::get('/', 'LoginController@getLogin')->name('home');
+    Route::post('/login', 'LoginController@postLogin')->name('login');
+    Route::get('/login-siswa', 'LoginController@getLoginSiswa');
+    Route::post('/login-siswa', 'LoginController@postLoginSiswa')->name('login-siswa');
+});
 Route::get('/logout', 'LoginController@logout')->name('logout');
+
+
 
 Route::prefix('admin')->middleware('auth:admin')->group(function () {  
     Route::get('/', function(){return view('pages.dashboard');})->name('admin.dashboard');   
@@ -33,4 +39,10 @@ Route::prefix('admin')->middleware('auth:admin')->group(function () {
 Route::prefix('petugas')->middleware('auth:petugas')->group(function (){
     Route::livewire('/', 'petugas.dashboard-livewire')->name('petugas.dashboard');
     Route::livewire('/pembayaran-spp', 'petugas.pembayaran-spp-livewire')->name('petugas.pembayaran-spp');
+    Route::livewire('/tagihan-spp', 'petugas.tagihan-spp-livewire')->name('petugas.tagihan-spp');
+});
+
+Route::prefix('siswa')->middleware('auth:siswa')->group(function(){
+    Route::livewire('/', 'siswa.dashboard-livewire')->name('siswa.dashboard');
+    // Route::livewire('/', 'siswa.spp-livewire')->name('siswa.dashboard');
 });

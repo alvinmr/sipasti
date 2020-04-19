@@ -50,6 +50,14 @@
                     <span class="menu-title">Petugas</span>
                 </a>            
             </li>  
+            <li class=" navigation-header"><span>Tagihan</span></li>
+            
+            <li class="nav-item {{ url()->current() == url('admin/tagihan-spp') ? 'active' : '' }}">
+                <a href="{{ route('admin.pembayaran-spp') }}">
+                    <i class="fa fa-money"></i>
+                    <span class="menu-title">Tagihan SPP</span>
+                </a>            
+            </li> 
             
             <li class=" navigation-header"><span>Pembayaran</span></li>
             
