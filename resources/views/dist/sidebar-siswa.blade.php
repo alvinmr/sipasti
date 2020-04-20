@@ -26,8 +26,8 @@
             {{-- NAVIGATION --}}            
             <li class=" navigation-header"><span>Pembayaran</span></li>
             
-            <li class="nav-item {{ url()->current() == url('petugas/pembayaran-spp') ? 'active' : '' }}">
-                <a href="{{ route('petugas.pembayaran-spp') }}">
+            <li class="nav-item {{ url()->current() == url('siswa/pembayaran-spp') ? 'active' : '' }}">
+                <a href="{{ route('siswa.history-spp') }}">
                     <i class="feather icon-book"></i>
                     <span class="menu-title">Pembayaran SPP</span>
                 </a>            

@@ -29,6 +29,9 @@
 
     <!-- BEGIN: Custom CSS-->
     @include('dist.custom-css')
+    <link rel="stylesheet" type="text/css" href="{{ asset('') }}app-assets/css/pages/dashboard-analytics.css">    
+    <link rel="stylesheet" type="text/css" href="{{ asset('') }}app-assets/css/core/colors/palette-gradient.css">
+
     <!-- END: Custom CSS-->
 
     <livewire:styles>
@@ -51,7 +54,7 @@
     @elseif(auth()->user()->level == 'petugas')    
         @include('dist.sidebar-petugas')
     @else
-        @include('dist.sidebar-petugas')
+        @include('dist.sidebar-siswa')
     @endif
     <!-- END: Main Menu-->
 

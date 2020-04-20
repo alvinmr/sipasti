@@ -37,7 +37,9 @@ class SiswaLivewire extends Component
 			'spp_id'=> 'required',
 		]);		
 		Siswa::create($validate);
+		session()->flash('judul', 'Berhasil!');
 		session()->flash('message', 'Siswa berhasil ditambah');
+		session()->flash('jenis', 'success');
 		return redirect()->route('admin.siswa');
 		
 	}
@@ -46,7 +48,7 @@ class SiswaLivewire extends Component
 	{
 		$siswa = Siswa::find($id);
 		if( !$siswa->pembayaran ){            
-            Kelas::destroy($id);
+            Siswa::destroy($id);
             session()->flash('judul', 'Berhasil!');
             session()->flash('message', 'Siswa berhasil dihapus');
             session()->flash('jenis', 'success');
@@ -69,7 +71,9 @@ class SiswaLivewire extends Component
 		$siswa->no_tlp = $this->no_tlp;
 		$siswa->spp_id = $this->spp_id;
 		$siswa->save();
+		session()->flash('judul', 'Berhasil!');
 		session()->flash('message', 'Siswa berhasil diedit');
+		session()->flash('jenis', 'success');
 		return redirect()->route('admin.siswa');
 	}
 

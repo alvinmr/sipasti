@@ -1,45 +1,28 @@
 <div>
-    <h2>Ini dashboard siswa</h2>
-    <div class="card mt-2">
-        <div class="card-header">
-            <h2 class="card-header-title">Data Pembayaran SPP</h2>
-            <div class="row align-items-center">                                
-            </div>
+    {{-- Do your work, then step back. --}}
+    <scetion class="dashboard-analytics">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <div class="card bg-analytics text-white">
+                    <div class="card-content">
+                        <div class="card-body text-center">
+                            <img src="{{ asset('') }}app-assets/images/elements/decore-left.png" class="img-left" alt=" card-img-left">
+                            <img src="{{ asset('') }}app-assets/images/elements/decore-right.png" class="img-right" alt=" card-img-right">
+                            <div class="avatar avatar-xl bg-primary shadow mt-0">
+                                <div class="avatar-content">
+                                    <i class="feather icon-award white font-large-1"></i>
+                                </div>
+                            </div>
+                            <div class="text-center">
+                                <h1 class="mb-2 text-white">Congratulations John,</h1>
+                                <p class="m-auto w-75">You have done <strong>57.6%</strong> more sales today. Check your new badge in your profile.</p>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>                        
         </div>
-        <div class="card-body">
-            <table class="table table-responsive-sm table-hover-animation">
-                <thead class="primary">
-                    <tr>
-                        <th>#</th>
-                        <th>Nama Petugas</th>
-                        <th>Status</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>                   
-                    @foreach ($tagihans as $tagihan)
-                    <tr>
-                        <td>{{ $loop->iteration }}</td>
-                        <td>{{ $tagihan }}</td>
-                        <td>{{ $tagihan }}</td>                        
-                        <td>
-                            <button wire:click="showEdit({{ $tagihan }})" class="btn btn-icon rounded-circle btn-warning mr-1 mb-1" id="editBtn{{ $loop->iteration }}">
-                                <i class="feather icon-edit-2"></i>
-                            </button>
-                            <script>
-                            $('#editBtn{{ $loop->iteration }}').click(function() {
-                                $('html, body').animate({scrollTop: '0px'}, 300);                                                              
-                            });
-                            </script>     
-                            <button wire:click="delete({{ $tagihan }})" class="btn btn-icon rounded-circle btn-danger mr-1 mb-1">
-                                <i class="feather icon-trash"></i>
-                            </button>                       
-                        </td>
-                    </tr>              
-                    @endforeach                            
-                </tbody>
-                </table>
-                {{-- {{ $tagihans->links() }} --}}
-        </div>
-    </div> 
+
+    </scetion>
 </div>

@@ -32,6 +32,12 @@
                     <span class="menu-title">Pembayaran SPP</span>
                 </a>            
             </li> 
+            <li class="nav-item {{ url()->current() == url('petugas/history-spp') ? 'active' : '' }}">
+                <a href="{{ route('petugas.history-spp') }}">
+                    <i class="fa fa-history"></i>
+                    <span class="menu-title">History Pembayaran SPP</span>
+                </a>            
+            </li> 
             
             
         </ul>

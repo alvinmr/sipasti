@@ -5,8 +5,8 @@
             <div class="row align-items-center">                                
             </div>
         </div>
-        <div class="card-body">
-            <table class="table table-responsive-sm table-hover-animation">
+        <div class="card-content">
+            <table class="table mt-1 mb-0 table-responsive-sm table-hover-animation">
                 <thead class="primary">
                     <tr>
                         <th>#</th>
