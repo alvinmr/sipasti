@@ -10,7 +10,7 @@ use Livewire\Component;
 
 class PembayaranSppLivewire extends Component
 {
-    use WithPagination;    
+    use WithPagination;
 
     public $pembayaran_id;
     public $petugas_id;
@@ -21,11 +21,11 @@ class PembayaranSppLivewire extends Component
     public $spp_id;
     public $jumlah_bayar;
     public $nominal;
-    
+
 
     public $judul_form = 'Tambah Pembayaran';
-	public $button = 'add';
-	public $block = true;
+    public $button = 'add';
+    public $block = true;
     public $bayar = false;
 
     public function updatedSiswaId($value)
@@ -45,9 +45,9 @@ class PembayaranSppLivewire extends Component
             'jumlah_bayar' => 'required'
         ]);
         $validate['petugas_id'] = auth()->user()->id;
-        $validate['bulan_dibayar'] = date('F'); 
+        $validate['bulan_dibayar'] = date('F');
         $validate['tahun_dibayar'] = date('Y');
-        $validate['jumlah_bayar'] = str_replace('.', '', $this->jumlah_bayar);       
+        $validate['jumlah_bayar'] = str_replace('.', '', $this->jumlah_bayar);
         PembayaranSpp::create($validate);
         session()->flash('judul', 'Berhasil!');
         session()->flash('message', 'Pembayaran berhasil ditambah');
@@ -58,27 +58,27 @@ class PembayaranSppLivewire extends Component
     public function edit($id)
     {
         $pembayaran = PembayaranSpp::find($id);
-		$pembayaran->petugas_id = $this->petugas_id;
+        $pembayaran->petugas_id = $this->petugas_id;
         $pembayaran->siswa_id = $this->siswa_id;
         $pembayaran->tgl_bayar = $this->tgl_bayar;
-        $pembayaran->jumlah_bayar = str_replace('.', '', $this->jumlah_bayar);    
-		$pembayaran->save();
-		session()->flash('judul', 'Berhasil!');
+        $pembayaran->jumlah_bayar = str_replace('.', '', $this->jumlah_bayar);
+        $pembayaran->save();
+        session()->flash('judul', 'Berhasil!');
         session()->flash('message', 'Pembayaran berhasil diedit');
         session()->flash('jenis', 'success');
-		return redirect()->route('admin.pembayaran-spp');
+        return redirect()->route('admin.pembayaran-spp');
     }
 
     public function showEdit($id)
-	{
-		$pembayaran = PembayaranSpp::find($id);
-		$this->block = false;
-		$this->judul_form = 'Edit Pembayaran';
-		$this->button = 'edit';
+    {
+        $pembayaran = PembayaranSpp::find($id);
+        $this->block = false;
+        $this->judul_form = 'Edit Pembayaran';
+        $this->button = 'edit';
         $this->pembayaran_id = $pembayaran->id;
         $this->petugas_id = $pembayaran->petugas_id;
-		$this->siswa_id = $pembayaran->siswa_id;
-		$this->tgl_bayar = $pembayaran->tgl_bayar;
+        $this->siswa_id = $pembayaran->siswa_id;
+        $this->tgl_bayar = $pembayaran->tgl_bayar;
         $this->jumlah_bayar = number_format($pembayaran->jumlah_bayar, 0, ",", ".");
         $this->nominal = $pembayaran->siswa->spp->nominal;
         $this->status = $pembayaran->status;
@@ -86,50 +86,51 @@ class PembayaranSppLivewire extends Component
     }
 
     public function delete($id)
-    {   
-        $pembayaran = PembayaranSpp::find($id);                
+    {
+        $pembayaran = PembayaranSpp::find($id);
         PembayaranSpp::destroy($id);
         session()->flash('judul', 'Berhasil!');
         session()->flash('message', 'Pembayaran berhasil dihapus');
-        session()->flash('jenis', 'success');   
+        session()->flash('jenis', 'success');
         return redirect()->route('admin.pembayaran-spp');
     }
 
     public function resetall()
-	{
-		$this->reset();
+    {
+        $this->reset();
     }
 
     public function bayar($id)
     {
         $pembayaran = PembayaranSpp::find($id);
         $pembayaran->jumlah_bayar = str_replace('.', '', $this->jumlah_bayar);
+        $pembayaran->petugas_id = auth()->user()->id;
         $pembayaran->save();
-		session()->flash('judul', 'Berhasil!');
+        session()->flash('judul', 'Berhasil!');
         session()->flash('message', 'Pembayaran berhasil!');
         session()->flash('jenis', 'success');
-		return redirect()->route('admin.pembayaran-spp');
+        return redirect()->route('admin.pembayaran-spp');
     }
-    
+
     public function showBayar($id)
     {
         $pembayaran = PembayaranSpp::find($id);
         $this->block = false;
         $this->bayar = true;
-		$this->judul_form = 'Pembayaran';
-		$this->button = 'bayar';
+        $this->judul_form = 'Pembayaran';
+        $this->button = 'bayar';
         $this->pembayaran_id = $pembayaran->id;
         $this->petugas_id = $pembayaran->petugas_id;
-		$this->siswa_id = $pembayaran->siswa_id;
-		$this->tgl_bayar = $pembayaran->tgl_bayar;
+        $this->siswa_id = $pembayaran->siswa_id;
+        $this->tgl_bayar = $pembayaran->tgl_bayar;
         $this->jumlah_bayar = number_format($pembayaran->jumlah_bayar, 0, ",", ".");
         $this->nominal = $pembayaran->siswa->spp->nominal;
         $this->bulan_dibayar = $pembayaran->bulan_dibayar;
     }
-    
+
     public function render()
     {
-        return view('livewire.admin.pembayaran-spp-livewire',[
+        return view('livewire.admin.pembayaran-spp-livewire', [
             'pembayaran_spps' => PembayaranSpp::paginate(5),
             'petugas' => Petugas::all(),
             'siswa' => Siswa::all()
