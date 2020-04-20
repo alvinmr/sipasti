@@ -69,7 +69,7 @@
                   <i class="feather icon-shopping-bag text-danger font-medium-5"></i>
                 </div>
               </div>
-              <h2 class="text-bold-700 text-success">{{  $spp }}</h2>
+              <h2 class="text-bold-700 text-success"></h2>
               <p class="mb-0">Total Tagihan SPP</p>
             </div>
           </div>

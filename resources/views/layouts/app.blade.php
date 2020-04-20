@@ -9,7 +9,7 @@
     <meta name="description" content="SIPASTI adalah web pembayaran SPP otomatis untuk segala organisasi">
     <meta name="keywords" content="spp otomatis, SPP, Web spp otomatis">
     <meta name="author" content="ALVIN">
-    <title>SPP</title>
+    <title>SIPASTI</title>
     <link rel="apple-touch-icon" href="{{ asset('') }}app-assets/images/ico/apple-icon-120.png">
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('') }}app-assets/images/ico/favicon.ico">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600" rel="stylesheet">
