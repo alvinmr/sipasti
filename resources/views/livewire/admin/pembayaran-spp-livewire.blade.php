@@ -207,6 +207,7 @@
         })
     </script>
     @endif
+    <a href="{{ route('exportpdf') }}" class="btn btn-danger">PDF</a>
     <div class="card mt-2">
         <div class="card-header">
             <h2 class="card-header-title">Data Pembayaran SPP</h2>
