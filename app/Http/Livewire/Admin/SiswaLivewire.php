@@ -42,11 +42,21 @@ class SiswaLivewire extends Component
 		
 	}
 
-	public function delete($nisn)
+	public function delete($id)
 	{
-		Siswa::destroy($nisn);
-		session()->flash('message', 'Siswa berhasil dihapus');
-		return redirect()->route('admin.siswa');
+		$siswa = Siswa::find($id);
+		if( !$siswa->pembayaran ){            
+            Kelas::destroy($id);
+            session()->flash('judul', 'Berhasil!');
+            session()->flash('message', 'Siswa berhasil dihapus');
+            session()->flash('jenis', 'success');
+            return redirect()->route('admin.siswa');
+        }else{
+            session()->flash('judul', 'Gagal!');
+            session()->flash('message', 'Siswa memiliki relasi');
+            session()->flash('jenis', 'error');
+            return redirect()->route('admin.siswa');
+        } 
 	}
 	public function edit($id)
 	{

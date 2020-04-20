@@ -23,16 +23,7 @@
                 </a>                    
             </li>
 
-            {{-- NAVIGATION --}}            
-            
-            <li class=" navigation-header"><span>Tagihan</span></li>
-            
-            <li class="nav-item {{ url()->current() == url('petugas/tagihan-spp') ? 'active' : '' }}">
-                <a href="{{ route('petugas.tagihan-spp') }}">
-                    <i class="fa fa-money"></i>
-                    <span class="menu-title">Tagihan SPP</span>
-                </a>            
-            </li> 
+            {{-- NAVIGATION --}}                                   
             <li class=" navigation-header"><span>Pembayaran</span></li>
 
             <li class="nav-item {{ url()->current() == url('petugas/pembayaran-spp') ? 'active' : '' }}">

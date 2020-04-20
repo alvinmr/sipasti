@@ -104,16 +104,16 @@
         </div>
     </div>
 </div>
-  @if (session()->has('message'))
-  <script>
+@if (session()->has('message'))
+<script>
     Swal.fire({
-      title: 'Berhasil!',
-      text: '{{ session("message") }}',
-      type: 'success',
-      confirmButtonText: 'Oke'
+    title: '{{ session("judul") }}!',
+    text: '{{ session("message") }}',
+    type: '{{ session("jenis") }}',
+    confirmButtonText: 'Oke'
     })
-  </script>
-  @endif
+</script>
+@endif
   <div class="card mt-2">
       <div class="card-header">
           <h2 class="card-header-title">Data Siswa</h2>

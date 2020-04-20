@@ -34,12 +34,12 @@ Route::prefix('admin')->middleware('auth:admin')->group(function () {
     Route::livewire('/siswa', 'admin.siswa-livewire')->name('admin.siswa');
     Route::livewire('/petugas', 'admin.petugas-livewire')->name('admin.petugas');
     Route::livewire('/pembayaran-spp', 'admin.pembayaran-spp-livewire')->name('admin.pembayaran-spp');
+    Route::livewire('/history-spp', 'admin.history-spp-livewire')->name('admin.history-spp');
 });
 
 Route::prefix('petugas')->middleware('auth:petugas')->group(function (){
     Route::livewire('/', 'petugas.dashboard-livewire')->name('petugas.dashboard');
     Route::livewire('/pembayaran-spp', 'petugas.pembayaran-spp-livewire')->name('petugas.pembayaran-spp');
-    Route::livewire('/tagihan-spp', 'petugas.tagihan-spp-livewire')->name('petugas.tagihan-spp');
 });
 
 Route::prefix('siswa')->middleware('auth:siswa')->group(function(){

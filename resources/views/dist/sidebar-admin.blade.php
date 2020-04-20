@@ -49,15 +49,7 @@
                     <i class="feather icon-shield"></i>
                     <span class="menu-title">Petugas</span>
                 </a>            
-            </li>  
-            <li class=" navigation-header"><span>Tagihan</span></li>
-            
-            <li class="nav-item {{ url()->current() == url('admin/tagihan-spp') ? 'active' : '' }}">
-                <a href="{{ route('admin.pembayaran-spp') }}">
-                    <i class="fa fa-money"></i>
-                    <span class="menu-title">Tagihan SPP</span>
-                </a>            
-            </li> 
+            </li>            
             
             <li class=" navigation-header"><span>Pembayaran</span></li>
             
@@ -65,6 +57,12 @@
                 <a href="{{ route('admin.pembayaran-spp') }}">
                     <i class="feather icon-book"></i>
                     <span class="menu-title">Pembayaran SPP</span>
+                </a>            
+            </li> 
+            <li class="nav-item {{ url()->current() == url('admin/history-spp') ? 'active' : '' }}">
+                <a href="{{ route('admin.history-spp') }}">
+                    <i class="fa fa-history"></i>
+                    <span class="menu-title">History Pembayaran SPP</span>
                 </a>            
             </li>                               
         </ul>

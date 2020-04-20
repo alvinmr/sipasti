@@ -24,6 +24,11 @@ class Siswa extends Authenticatable
         
     }
 
+    public function pembayaran()
+    {
+        return $this->hasOne(PembayaranSpp::class);
+    }
+
     
 
 }

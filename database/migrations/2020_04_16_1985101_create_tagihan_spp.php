@@ -15,10 +15,11 @@ class CreateTagihanSpp extends Migration
     {
         Schema::create('tagihan_spp', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_siswa');
+            $table->unsignedBigInteger('siswa_id');
             $table->string('bulan',50);
+            $table->integer('nominal');
 
-            $table->foreign('id_siswa')->references('id')->on('siswa');
+            $table->foreign('siswa_id')->references('id')->on('siswa');
         });
     }
 
