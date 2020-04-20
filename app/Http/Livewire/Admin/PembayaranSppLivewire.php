@@ -39,14 +39,12 @@ class PembayaranSppLivewire extends Component
             'petugas_id' => '',
             'siswa_id' => 'required',
             'tgl_bayar' => 'required',
-            'bulan_dibayar' => '',
+            'bulan_dibayar' => 'required',
             'tahun_dibayar' => '',
             'spp_id' => 'required',
             'jumlah_bayar' => 'required'
         ]);
         $validate['petugas_id'] = auth()->user()->id;
-        $validate['bulan_dibayar'] = date('F');
-        $validate['tahun_dibayar'] = date('Y');
         $validate['jumlah_bayar'] = str_replace('.', '', $this->jumlah_bayar);
         PembayaranSpp::create($validate);
         session()->flash('judul', 'Berhasil!');

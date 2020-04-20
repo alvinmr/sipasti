@@ -50,7 +50,7 @@
                     <div class="col-lg-3">
                         <div class="form-group">
                             <label for="petugas">Tanggal Bayar</label> 
-                            <input  type="date" value="{{ $tgl_bayar }}" class="form-control pickadate round @error('tgl_bayar') is-invalid @enderror" placeholder="..." id="tgl_bayar">
+                            <input  type="date" value="{{ $tgl_bayar }}" class="form-control pickadate round @error('tgl_bayar') is-invalid @enderror" placeholder="" id="tgl_bayar">
                             @error('tgl_bayar')                         
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -62,7 +62,7 @@
                     <div class="col-lg-3">
                         <div class="form-group">
                             <label for="petugas">Bulan</label> 
-                            <input type="text" wire:model.lazy="bulan_dibayar" class="form-control round @error('bulan') is-invalid @enderror" placeholder="000009" id="bulan">
+                            <input type="text" wire:model.lazy="bulan_dibayar" class="form-control round @error('bulan_dibayar') is-invalid @enderror" placeholder="" id="bulan">
                             @error('bulan_dibayar')                         
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -84,7 +84,7 @@
                     <div class="col-lg-12">
                         <div class="form-group">
                             <label for="petugas">Jumlah Pembayaran</label> 
-                            <input type="text" wire:model="jumlah_bayar" class="form-control round @error('jumlah_bayar') is-invalid @enderror" placeholder="000009" id="jumlah_bayar">
+                            <input type="text" wire:model="jumlah_bayar" class="form-control round @error('jumlah_bayar') is-invalid @enderror" placeholder="" id="jumlah_bayar">
                             @error('jumlah_bayar')                         
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -182,7 +182,7 @@
                     <div class="col-lg-12">
                         <div class="form-group">
                             <label for="petugas">Jumlah Pembayaran</label> 
-                            <input type="text" wire:model="jumlah_bayar" class="form-control round @error('jumlah_bayar') is-invalid @enderror" placeholder="000009" id="edit_jumlah">
+                            <input type="text" wire:model="jumlah_bayar" class="form-control round @error('jumlah_bayar') is-invalid @enderror" placeholder="" id="edit_jumlah">
                             @error('jumlah_bayar')                         
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>

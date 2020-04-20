@@ -15,7 +15,7 @@
                     <div class="col-lg-6">
                         <div class="form-group">
                         <label for="tahun">Tahun</label>
-                        <input type="text" wire:model.lazy="tahun" class="form-control round @error('tahun') is-invalid @enderror" placeholder="000009">
+                        <input type="text" wire:model.lazy="tahun" class="form-control round @error('tahun') is-invalid @enderror" placeholder="">
                         @error('tahun') 
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -27,7 +27,7 @@
                     <div class="col-lg-6">
                         <div class="form-group">
                         <label for="nis">Nominal</label>
-                        <input type="text" wire:model.lazy="nominal" id="nominal" class="form-control round @error('nominal') is-invalid @enderror" placeholder="000009">
+                        <input type="text" wire:model.lazy="nominal" id="nominal" class="form-control round @error('nominal') is-invalid @enderror" placeholder="">
                         @error('nominal') 
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>

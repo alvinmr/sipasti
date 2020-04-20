@@ -15,7 +15,7 @@
                     <div class="col-lg-6">
                         <div class="form-group">
                         <label for="nisn">Nama Kelas</label>
-                        <input type="text" style="text-transform: uppercase;" wire:model.lazy="nama_kelas" class="form-control round @error('nama_kelas') is-invalid @enderror" placeholder="000009">
+                        <input type="text" style="text-transform: uppercase;" wire:model.lazy="nama_kelas" class="form-control round @error('nama_kelas') is-invalid @enderror" placeholder="">
                         @error('nama_kelas') 
                             <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -27,7 +27,7 @@
                     <div class="col-lg-6">
                         <div class="form-group">
                         <label for="nis">Kompetensi Keahlian</label>
-                        <input type="text" style="text-transform: capitalize;" wire:model.lazy="kompetensi_keahlian" class="form-control round @error('nama_kelas') is-invalid @enderror" placeholder="000009">
+                        <input type="text" style="text-transform: capitalize;" wire:model.lazy="kompetensi_keahlian" class="form-control round @error('nama_kelas') is-invalid @enderror" placeholder="">
                         @error('kompetensi_keahlian') 
                             <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>

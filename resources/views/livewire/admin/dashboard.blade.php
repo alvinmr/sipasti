@@ -68,8 +68,8 @@
                   <i class="feather icon-shopping-bag text-danger font-medium-5"></i>
                 </div>
               </div>
-              <h2 class="text-bold-700 text-success"></h2>
-              <p class="mb-0">Total Tagihan SPP</p>
+              <h2 class="text-bold-700 text-success">{{ $pembayaran }}</h2>
+              <p class="mb-0">Data Pembayaran SPP</p>
             </div>
           </div>
         </div>
@@ -83,7 +83,7 @@
                   <i class="feather icon-shopping-bag text-danger font-medium-5"></i>
                 </div>
               </div>
-              <h2 class="text-bold-700"></h2>
+              <h2 class="text-bold-700">{{ $kelas }}</h2>
               <p class="mb-0">Kelas</p>
             </div>
           </div>

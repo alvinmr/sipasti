@@ -16,8 +16,8 @@
     <div class="shadow-bottom"></div>
     <div class="main-menu-content">
         <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
-            <li class="nav-item {{ url()->current() == url('/') ? 'active' : '' }}">
-                <a href="{{ url('') }}">
+            <li class="nav-item {{ url()->current() == url('/admin') ? 'active' : '' }}">
+                <a href="{{ url('/admin') }}">
                     <i class="feather icon-home"></i>
                     <span class="menu-title">Dashboard</span>
                 </a>                    

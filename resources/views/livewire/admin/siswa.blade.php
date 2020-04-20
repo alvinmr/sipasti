@@ -15,7 +15,7 @@
               <div class="col-lg-3">
                 <div class="form-group">
                   <label for="nisn">NISN</label>
-                  <input type="text" {{ $block == true ? '' : 'disabled' }} wire:model.lazy="nisn" class="form-control round" id="nisn" placeholder="000009">
+                  <input type="text" {{ $block == true ? '' : 'disabled' }} wire:model.lazy="nisn" class="form-control round" id="nisn" placeholder="">
                   @error('nisn') 
                   <i class="feather icon-info mr-1 align-middle"></i>
                         <span class="error danger">{{ $message }}</span>  
@@ -26,7 +26,7 @@
               <div class="col-lg-3">
                 <div class="form-group">
                   <label for="nis">NIS</label>
-                  <input type="text" wire:model.lazy="nis" class="form-control round" id="nis" placeholder="000009">
+                  <input type="text" wire:model.lazy="nis" class="form-control round" id="nis" placeholder="">
                   @error('nis') 
                   <i class="feather icon-info mr-1 align-middle"></i>
                         <span class="error danger">{{ $message }}</span>  
@@ -37,7 +37,7 @@
               <div class="col-lg-4">
                 <div class="form-group">
                   <label for="nama">Nama Lengkap</label>
-                  <input type="text" wire:model.lazy="nama" class="form-control round" id="nama" placeholder="000009">
+                  <input type="text" wire:model.lazy="nama" class="form-control round" id="nama" placeholder="">
                   @error('nama') 
                   <i class="feather icon-info mr-1 align-middle"></i>
                         <span class="error danger">{{ $message }}</span>  
@@ -65,7 +65,7 @@
               <div class="col-lg-6">
                 <div class="form-group">
                   <label for="alamat">Alamat</label>
-                  <input type="text" wire:model.lazy="alamat" class="form-control round" id="alamat" placeholder="000009">
+                  <input type="text" wire:model.lazy="alamat" class="form-control round" id="alamat" placeholder="">
                   @error('alamat') 
                   <i class="feather icon-info mr-1 align-middle"></i>
                         <span class="error danger">{{ $message }}</span>  
@@ -75,7 +75,7 @@
               <div class="col-lg-3">
                 <div class="form-group">
                   <label for="no_tlp">No Telpon</label>
-                  <input type="text" wire:model.lazy="no_tlp" class="form-control round" id="no_tlp" placeholder="000009">
+                  <input type="text" wire:model.lazy="no_tlp" class="form-control round" id="no_tlp" placeholder="">
                   @error('no_tlp') 
                   <i class="feather icon-info mr-1 align-middle"></i>
                   <span class="error danger">{{ $message }}</span>  

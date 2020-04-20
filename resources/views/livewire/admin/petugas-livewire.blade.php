@@ -15,7 +15,7 @@
                     <div class="col-lg-3">
                         <div class="form-group">
                         <label for="nisn">Username</label>
-                        <input type="text" wire:model.lazy="username" class="form-control round" placeholder="000009">
+                        <input type="text" wire:model.lazy="username" class="form-control round" placeholder="">
                         @error('username') 
                         <i class="feather icon-info mr-1 align-middle"></i>
                         <span class="error danger">{{ $message }}</span>  
@@ -25,7 +25,7 @@
                     <div class="col-lg-3 {{ $block == true ? '' : 'd-none' }}">
                         <div class="form-group">
                         <label for="nisn">Password</label>
-                        <input type="password" wire:model.lazy="password" class="form-control round" placeholder="000009">
+                        <input type="password" wire:model.lazy="password" class="form-control round" placeholder="">
                         @error('password') 
                         <i class="feather icon-info mr-1 align-middle"></i>
                         <span class="error danger">{{ $message }}</span>  
@@ -35,7 +35,7 @@
                     <div class="col-lg-3">
                         <div class="form-group">
                         <label for="nisn">Nama petugas</label>
-                        <input type="text" wire:model.lazy="nama_petugas" class="form-control round" placeholder="000009">
+                        <input type="text" wire:model.lazy="nama_petugas" class="form-control round" placeholder="">
                         @error('nama_petugas') 
                         <i class="feather icon-info mr-1 align-middle"></i>
                         <span class="error danger">{{ $message }}</span>  

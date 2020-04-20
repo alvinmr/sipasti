@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\PembayaranSpp;
+use App\Exports\PembayaranExport;
+use Excel;
 use PDF;
 
 class AdminToPdf extends Controller
@@ -16,5 +18,10 @@ class AdminToPdf extends Controller
             'total' => PembayaranSpp::all()->sum('jumlah_bayar')
         ]);
         return $pdf->stream();
+    }
+
+    public function export()
+    {
+        return Excel::download(new PembayaranExport, 'pembayaran.xlsx');
     }
 }

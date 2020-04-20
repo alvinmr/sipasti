@@ -12,6 +12,7 @@
             <th>Angkatan Tahun</th>
             <th>Nominal SPP</th>
             <th>Jumlah Dibayar</th>
+            <th>Status</th>
         </tr>
     </thead>
     <tbody>                   
@@ -19,18 +20,21 @@
         <tr>
             <td>{{ $loop->iteration }}</td>
             <td>{{ $pembayaran->petugas->nama_petugas }}</td>
-            <td>{{ $pembayaran->siswa->nis }}</td>
-            <td>{{ $pembayaran->siswa->nama }}</td>
-            <td>{{ $pembayaran->tgl_bayar }}</td>
-            <td>{{ $pembayaran->bulan_dibayar }}</td>
-            <td>{{ $pembayaran->tahun_dibayar }}</td>
+            <td>{{ $pembayaran->siswa->nis }}</td>                        
+            <td>{{ $pembayaran->siswa->nama }}</td>                        
+            <td>{{ $pembayaran->tgl_bayar }}</td>                        
+            <td>{{ $pembayaran->bulan_dibayar }}</td>                        
+            <td>{{ $pembayaran->tahun_dibayar }}</td>                        
             <td>{{ "Rp " . number_format($pembayaran->siswa->spp->nominal, 0, ",", ".") }}</td>                       
-            <td>{{ "Rp " . number_format($pembayaran->jumlah_bayar, 0, ",", ".") }}</td>                                  
-        </tr>              
+            <td>{{ "Rp " . number_format($pembayaran->jumlah_bayar, 0, ",", ".") }}</td>                                   
+            <td>                
+                {{ $pembayaran->siswa->spp->nominal <= $pembayaran->jumlah_bayar ? 'Lunas' : 'Belum Lunas' }}                
+            </td>                        
+        </tr>               
         @endforeach  
         <tr>
-            <td border="1px" colspan="8">Total Pembayaran:</td>                          
-            <td border="1px">{{ "Rp " . number_format($total, 0, ",", ".") }}</td>                          
+            <td colspan="8">Total Pembayaran:</td>                          
+            <td colspan="2" align="center"> {{ "Rp " . number_format($total, 0, ",", ".") }}</td>                          
         </tr>
     </tbody>
 </table>
