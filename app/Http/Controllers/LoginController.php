@@ -80,7 +80,7 @@ class LoginController extends Controller
 
         $siswa = Siswa::where('nisn', $request->nisn)->first();
         // dd($siswa);
-        if($siswa["nisn"]){
+        if($siswa){
             Auth::guard('siswa')->LoginUsingId($siswa["id"]);
             return redirect()->route('siswa.dashboard');
         }else{
