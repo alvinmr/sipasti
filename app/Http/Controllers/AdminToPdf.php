@@ -12,7 +12,6 @@ class AdminToPdf extends Controller
 {
     public function export_pdf()
     {
-        // $bayar = ;
         $pdf = PDF::loadView('pdf.pembayaran', [
             'pembayaran_spps' => PembayaranSpp::all(),
             'total' => PembayaranSpp::all()->sum('jumlah_bayar')

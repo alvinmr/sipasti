@@ -79,20 +79,7 @@
                             <h2>{{ "Rp " . number_format($nominal, 0, ",", ".") }}</h2>                            
                         </div>              
                     </div>                     
-                </div>                    
-                <div class="row {{ $block == true ? 'd-block' : 'd-none' }}">
-                    <div class="col-lg-12">
-                        <div class="form-group">
-                            <label for="petugas">Jumlah Pembayaran</label> 
-                            <input type="text" wire:model="jumlah_bayar" class="form-control round @error('jumlah_bayar') is-invalid @enderror" placeholder="" id="jumlah_bayar">
-                            @error('jumlah_bayar')                         
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span> 
-                            @enderror
-                        </div>              
-                    </div> 
-                </div>
+                </div>   
                 <button wire:click="add" class="mx-1 btn bg-gradient-primary round {{ $block == true ? 'd-inline' : 'd-none' }}"><i class="feather icon-send"></i> Tambah</button>            
                 <button wire:click="edit({{ $pembayaran_id }})" class="mx-1 btn bg-gradient-primary round {{ $block == true ? 'd-none' : 'd-inline' }}"><i class="feather icon-send"></i> Edit</button>            
                 <button wire:click="resetall" class="btn btn-flat-danger round {{ $block == false ? '' : 'd-none' }}"><i class="feather icon-x"></i> Cancel</button>                            

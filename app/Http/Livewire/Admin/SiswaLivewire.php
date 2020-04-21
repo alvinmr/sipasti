@@ -64,6 +64,7 @@ class SiswaLivewire extends Component
 	{
 		$siswa = Siswa::find($id);
 		$siswa->spp()->associate($this->spp_id);
+		$siswa->nisn = $this->nisn;
 		$siswa->nis = $this->nis;
 		$siswa->nama = $this->nama;
 		$siswa->kelas_id = $this->kelas_id;
