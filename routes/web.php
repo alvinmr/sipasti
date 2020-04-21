@@ -23,7 +23,7 @@ Route::middleware('guest')->group(function () {
     Route::get('/login-siswa', 'LoginController@getLoginSiswa');
     Route::post('/login-siswa', 'LoginController@postLoginSiswa')->name('login-siswa');
 });
-Route::get('/logout', 'LoginController@logout')->name('logout');
+Route::post('/logout', 'LoginController@logout')->name('logout');
 
 
 
