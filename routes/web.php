@@ -34,7 +34,7 @@ Route::prefix('admin')->middleware('auth:admin')->group(function () {
     Route::livewire('/siswa', 'admin.siswa-livewire')->name('admin.siswa');
     Route::livewire('/petugas', 'admin.petugas-livewire')->name('admin.petugas');
     Route::livewire('/pembayaran-spp', 'admin.pembayaran-spp-livewire')->name('admin.pembayaran-spp');
-    Route::livewire('/history-spp', 'admin.history-spp-livewire')->name('admin.history-spp');
+    Route::get('/history-spp', 'HistoryPembayaran@index')->name('admin.history-spp');
     Route::get('/exportpdf', 'AdminToPdf@export_pdf')->name('exportpdf');
     Route::get('/exportexel', 'AdminToPdf@export')->name('exportexel');
 });

@@ -9,7 +9,7 @@ class HistorySppLivewire extends Component
 {
     public function render()
     {
-        return view('livewire.admin.history-spp-livewire',[
+        return view('livewire.admin.card-history', [
             'histories' => PembayaranSpp::paginate(5)
         ]);
     }
