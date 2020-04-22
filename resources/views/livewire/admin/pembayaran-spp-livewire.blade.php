@@ -79,7 +79,7 @@
                             <h2>{{ "Rp " . number_format($nominal, 0, ",", ".") }}</h2>                            
                         </div>              
                     </div>                     
-                </div>                                    
+                </div>   
                 <button wire:click="add" class="mx-1 btn bg-gradient-primary round {{ $block == true ? 'd-inline' : 'd-none' }}"><i class="feather icon-send"></i> Tambah</button>            
                 <button wire:click="edit({{ $pembayaran_id }})" class="mx-1 btn bg-gradient-primary round {{ $block == true ? 'd-none' : 'd-inline' }}"><i class="feather icon-send"></i> Edit</button>            
                 <button wire:click="resetall" class="btn btn-flat-danger round {{ $block == false ? '' : 'd-none' }}"><i class="feather icon-x"></i> Cancel</button>                            

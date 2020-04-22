@@ -16,7 +16,7 @@
     <div class="shadow-bottom"></div>
     <div class="main-menu-content">
         <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
-            <li class="nav-item {{ url()->current() == url('petugas') ? 'active' : '' }}">
+            <li class="nav-item {{ url()->current() == url('siswa') ? 'active' : '' }}">
                 <a href="{{ url('') }}">
                     <i class="feather icon-home"></i>
                     <span class="menu-title">Dashboard</span>
@@ -26,10 +26,10 @@
             {{-- NAVIGATION --}}            
             <li class=" navigation-header"><span>Pembayaran</span></li>
             
-            <li class="nav-item {{ url()->current() == url('siswa/pembayaran-spp') ? 'active' : '' }}">
+            <li class="nav-item {{ url()->current() == url('siswa/history-spp') ? 'active' : '' }}">
                 <a href="{{ route('siswa.history-spp') }}">
                     <i class="feather icon-book"></i>
-                    <span class="menu-title">Pembayaran SPP</span>
+                    <span class="menu-title">History Pembayaran SPP</span>
                 </a>            
             </li>                               
         </ul>

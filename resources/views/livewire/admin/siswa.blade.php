@@ -15,7 +15,7 @@
               <div class="col-lg-3">
                 <div class="form-group">
                   <label for="nisn">NISN</label>
-                  <input type="text" {{ $block == true ? '' : 'disabled' }} wire:model.lazy="nisn" class="form-control round" id="nisn" placeholder="">
+                  <input type="text" wire:model.lazy="nisn" class="form-control round" id="nisn" placeholder="">
                   @error('nisn') 
                   <i class="feather icon-info mr-1 align-middle"></i>
                         <span class="error danger">{{ $message }}</span>  

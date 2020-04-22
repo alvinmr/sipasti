@@ -1,4 +1,6 @@
-<div>     
+<a target="_blank" href="{{ route('exportpdf') }}" class="btn btn-danger">Export to PDF</a>
+<a target="_blank" href="{{ route('exportexel') }}" class="btn btn-success">Export to Exel</a>
+<div> 
     <div class="card mt-2">
         <div class="card-header">
             <h2 class="card-header-title">Data History Pembayaran</h2>

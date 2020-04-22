@@ -53,15 +53,23 @@ class LoginController extends Controller
     {
         if(Auth::guard('admin')->check()){
             Auth::guard('admin')->logout();
+            session()->flash('judul', 'Berhasil!');
+            session()->flash('message', 'Logout berhasil!!');
+            session()->flash('jenis', 'success'); 
+            return redirect('/');
         }elseif(Auth::guard('petugas')->check()){
-            Auth::guard('petugas')->logout();    
+            Auth::guard('petugas')->logout(); 
+            session()->flash('judul', 'Berhasil!');
+            session()->flash('message', 'Logout berhasil!!');
+            session()->flash('jenis', 'success'); 
+            return redirect('/');  
         }elseif(Auth::guard('siswa')->check()){
             Auth::guard('siswa')->logout();
+            session()->flash('judul', 'Berhasil!');
+            session()->flash('message', 'Logout berhasil!!');
+            session()->flash('jenis', 'success'); 
+            return redirect('/');
         }
-        session()->flash('judul', 'Berhasil!');
-        session()->flash('message', 'Berhasil Logout!');
-        session()->flash('jenis', 'success'); 
-        return redirect('/');
     }
 
     public function postLoginSiswa(Request $request)
@@ -72,7 +80,7 @@ class LoginController extends Controller
 
         $siswa = Siswa::where('nisn', $request->nisn)->first();
         // dd($siswa);
-        if(!$siswa["nisn"] == ''){
+        if($siswa){
             Auth::guard('siswa')->LoginUsingId($siswa["id"]);
             return redirect()->route('siswa.dashboard');
         }else{

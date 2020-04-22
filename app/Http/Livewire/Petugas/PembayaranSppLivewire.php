@@ -42,10 +42,11 @@ class PembayaranSppLivewire extends Component
             'bulan_dibayar' => 'required',
             'tahun_dibayar' => '',
             'spp_id' => 'required',
-            'jumlah_bayar' => 'required'
+            'jumlah_bayar' => ''
         ]);
         $validate['tahun_dibayar'] = Siswa::find($validate['siswa_id'])->spp->tahun;
         $validate['petugas_id'] = auth()->user()->id;
+        $validate['jumlah_bayar'] = 0;
         PembayaranSpp::create($validate);
         session()->flash('judul', 'Berhasil!');
         session()->flash('message', 'Pembayaran berhasil ditambah');
